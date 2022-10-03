@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:29:33 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/03 21:22:25 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/03 22:21:47 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	best_result(t_filler *filler, int x, int y)
 {
-	if (filler->best_score == 0 || filler->map_score < filler->best_score)
+	if (filler->best_score == -1 || filler->map_score < filler->best_score)
 	filler->best_score = filler->map_score;
 	int y = filler->best_y;
 	int x = filler->best_x;

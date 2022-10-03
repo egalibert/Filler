@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:18:09 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/03 21:41:31 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/03 22:21:36 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void init_filler(t_filler *filler)
 	filler->map_score = 0;
 	filler->overlap = 0;
 	filler->not_valid = 0;
-	filler->best_score = 0;
+	filler->best_score = -1;
 	filler->best_x = 0;
 	filler->best_y = 0;
 
