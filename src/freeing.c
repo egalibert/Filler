@@ -6,11 +6,11 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:26:33 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/03 22:29:34 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/04 00:16:47 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "../includes/filler.h"
 
 void	free_board(t_filler *filler)
 {
@@ -43,4 +43,5 @@ int	cleaner(t_filler *filler, char *line)
 	free_board(filler);
 	free_piece(filler);
 	ft_strdel(&line);
+	return (0);
 }

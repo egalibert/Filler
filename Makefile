@@ -6,7 +6,7 @@
 #    By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 11:07:27 by egaliber          #+#    #+#              #
-#    Updated: 2022/10/03 21:51:24 by egaliber         ###   ########.fr        #
+#    Updated: 2022/10/03 23:33:22 by egaliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,7 @@ make_board.c \
 make_heatmap.c \
 helpers.c \
 solver.c \
-
-
+freeing.c
 
 LIBFT_FUNCTIONS = $(addprefix libft/, ft_atoi.o \
 		ft_strlen.o \
@@ -94,11 +93,13 @@ LIBFT_FUNCTIONS = $(addprefix libft/, ft_atoi.o \
 		get_next_line.o \
 		ft_lstsize_extra.o)
 
-FLAGS = -c -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
-INCLUDES = -I ./includes
+LIBFT = libft/libft.a
 
-OBJS = $(SRCS:.o=.o)
+INCLUDES = includes/
+
+OBJS = $(SRCS:.c=.o)
 
 P_SRCS = $(addprefix $(SRCSPATH), $(SRCS))
 
@@ -107,8 +108,8 @@ all : $(NAME)
 
 $(NAME):
 	@make -C libft
-	@gcc $(FLAGS) $(INCLUDES) $(P_SRCS)
-	@ar -rc $(NAME) $(OBJS) $(LIBFT_FUNCTIONS)
+	@gcc $(FLAGS) -c $(P_SRCS) -I $(INCLUDES)
+	@gcc $(FLAGS) -I $(INCLUDES) $(OBJS) $(LIBFT) -o $(NAME)
 
 clean :
 	@make clean -C libft
