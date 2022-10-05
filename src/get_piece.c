@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 12:44:23 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/05 00:19:56 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:45:42 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@ void	give_value(t_filler *filler, char *line)
 	int	x;
 
 	y = 0;
-	while(y < filler->piece_hei)
+	while (y < filler->piece_hei)
 	{
 		get_next_line(0, &line);
-		line = ft_strchr(line, ' ') + 1;
 		x = 0;
-		while(x < filler->piece_wid)
+		while (x < filler->piece_wid)
 		{
 			if (line[x] == '*')
 				filler->piece[y][x] = -1;
 			if (line[x] == '.')
 				filler->piece[y][x] = 0;
-			x++;	
+			x++;
 		}
 		y++;
 	}
@@ -39,17 +38,15 @@ int	get_piece_info(t_filler *filler, char *line)
 {
 	char	*width;
 	char	*height;
-	
-	{
-		height = ft_strchr(line, ' ');
-		width = ft_strrchr(line, ' ');
-		if (!width || !height)
-			return (0);
-		filler->piece_wid = ft_atoi(width);
-		filler->piece_hei = ft_atoi(height);
-		if (filler->piece_wid <= 0 || filler->piece_hei <= 0)
-			return (0);
-	}
+
+	height = ft_strchr(line, ' ');
+	width = ft_strrchr(line, ' ');
+	if (!width || !height)
+		return (0);
+	filler->piece_wid = ft_atoi(width);
+	filler->piece_hei = ft_atoi(height);
+	if (filler->piece_wid <= 0 || filler->piece_hei <= 0)
+		return (0);
 	return (1);
 }
 

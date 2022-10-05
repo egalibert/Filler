@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:15:56 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/04 21:49:22 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:38:49 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	range_all(t_filler *filler, int x, int y, int i)
 		filler->board[y][x] = i + 1;
 	if (y + 1 < filler->map_hei && filler->board[y + 1][x] == i)
 		filler->board[y][x] = i + 1;
-	if (y + 1 < filler->map_hei && x + 1 < filler->map_wid && filler->board[y + 1][x + 1]== i)
+	if (y + 1 < filler->map_hei && x + 1 < filler->map_wid && filler->board[y + 1][x + 1] == i)
 		filler->board[y][x] = i + 1;
 }
 
@@ -75,13 +75,12 @@ void	range_one(t_filler *filler, int x, int y)
 		filler->board[y][x] = 1;
 	if (y + 1 < filler->map_hei && x + 1 < filler->map_wid && filler->board[y + 1][x + 1] == -2)
 		filler->board[y][x] = 1;
-
 }
 
 void	fill_heatmap(t_filler *filler)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = -1;
 	while (++y < filler->map_hei)
@@ -99,5 +98,5 @@ int	make_heatmap(t_filler *filler)
 {
 	fill_heatmap(filler);
 	fill_rest(filler);
-	return(0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:18:09 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/05 00:39:23 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:42:02 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	get_p_and_m(t_filler *filler, char *line)
 	return (0);
 }
 
-void init_filler(t_filler *filler)
+void	init_filler(t_filler *filler)
 {
 	filler->player_num = 0;
 	filler->map_hei = 0;
@@ -64,12 +64,9 @@ void init_filler(t_filler *filler)
 	filler->piece = NULL;
 	filler->me = 0;
 	filler->enemy = 0;
-
-	// piece->piece_h = 0;
-	// piece->piece_w = 0;
 }
 
-int main(void)
+int	main(void)
 {
 	char		*line;
 	int			x;
@@ -89,7 +86,6 @@ int main(void)
 				return (cleaner(&filler, line));
 			if (solver(&filler, x, y) != 0)
 				return (cleaner(&filler, line));
-			reset_filler(&filler);
 		}
 	}
 	return (0);

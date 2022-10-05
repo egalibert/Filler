@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:26:33 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/04 00:16:47 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:42:36 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,18 @@ void	free_board(t_filler *filler)
 
 void	free_piece(t_filler *filler)
 {
-	int j;
+	int	j;
 
-	j = -1;
-	while (filler->piece[++j])
-		if (filler->piece[j])
-			free(filler->piece[j]);
+	j = 0;
 	if (filler->piece)
+	{
+		while (j < filler->piece_hei)
+		{
+			free(filler->piece[j]);
+			j++;
+		}
 		free(filler->piece);
+	}
 	filler->piece = NULL;
 }
 
