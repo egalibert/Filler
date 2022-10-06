@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:15:43 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/05 13:50:39 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/06 03:32:55 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_filler
 	int			map_wid;
 	int			piece_wid;
 	int			piece_hei;
-	int			**board;
+	int			**map;
 	int			**piece;
 	int			map_score;
 	int			overlap;
@@ -43,14 +43,16 @@ void	init_filler(t_filler *filler);
 void	get_players(t_filler *filler, char *line);
 void	get_border_limit(t_filler *filler);
 void	reset_filler(t_filler *filler);
+void	free_board(t_filler *filler);
+void	make_heatmap(t_filler *filler);
 
+int		main(void);
 int		get_p_and_m(t_filler *filler, char *line);
 int		make_game(t_filler *filler, char *line);
 int		get_map_values(t_filler *filler, char *line);
-int		**make_board(int map_height, int map_width);
-int		make_heatmap(t_filler *filler);
+int		**make_map(int map_height, int map_width);
 int		get_piece(t_filler *filler, char *line);
-int		solver(t_filler *filler, int x, int y);
+int		solver(t_filler *filler);
 int		cleaner(t_filler *filler, char *line);
 void	free_piece(t_filler *filler);
 

@@ -6,7 +6,7 @@
 #    By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 11:07:27 by egaliber          #+#    #+#              #
-#    Updated: 2022/10/03 23:33:22 by egaliber         ###   ########.fr        #
+#    Updated: 2022/10/06 03:34:52 by egaliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ NAME := egaliber.filler
 
 SRCSPATH = src/
 
-SRCS = main_filler.c \
+SRCS = main.c \
 player_and_map.c \
 get_piece.c \
-make_board.c \
+make_map.c \
 make_heatmap.c \
 helpers.c \
 solver.c \

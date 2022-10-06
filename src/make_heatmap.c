@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 12:15:56 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/05 13:38:49 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/06 03:36:20 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 
 void	range_all(t_filler *filler, int x, int y, int i)
 {
-	if (x + 1 < filler->map_wid && filler->board[y][x + 1] == i)
-		filler->board[y][x] = i + 1;
-	if (x + 1 < filler->map_wid && y - 1 >= 0 && filler->board[y - 1][x + 1] == i)
-		filler->board[y][x] = i + 1;
-	if (y - 1 >= 0 && filler->board[y - 1][x] == i)
-		filler->board[y][x] = i + 1;
-	if (x - 1 >= 0 && y - 1 >= 0 && filler->board[y - 1][x - 1] == i)
-		filler->board[y][x] = i + 1;
-	if (x - 1 >= 0 && filler->board[y][x - 1] == i)
-		filler->board[y][x] = i + 1;
-	if (x - 1 >= 0 && y + 1 < filler->map_hei && filler->board[y + 1][x - 1] == i)
-		filler->board[y][x] = i + 1;
-	if (y + 1 < filler->map_hei && filler->board[y + 1][x] == i)
-		filler->board[y][x] = i + 1;
-	if (y + 1 < filler->map_hei && x + 1 < filler->map_wid && filler->board[y + 1][x + 1] == i)
-		filler->board[y][x] = i + 1;
+	if (x + 1 < filler->map_wid && filler->map[y][x + 1] == i)
+		filler->map[y][x] = i + 1;
+	if (x + 1 < filler->map_wid && y - 1 >= 0 && filler->map[y - 1][x + 1] == i)
+		filler->map[y][x] = i + 1;
+	if (y - 1 >= 0 && filler->map[y - 1][x] == i)
+		filler->map[y][x] = i + 1;
+	if (x - 1 >= 0 && y - 1 >= 0 && filler->map[y - 1][x - 1] == i)
+		filler->map[y][x] = i + 1;
+	if (x - 1 >= 0 && filler->map[y][x - 1] == i)
+		filler->map[y][x] = i + 1;
+	if (x - 1 >= 0 && y + 1 < filler->map_hei && filler->map[y + 1][x - 1] == i)
+		filler->map[y][x] = i + 1;
+	if (y + 1 < filler->map_hei && filler->map[y + 1][x] == i)
+		filler->map[y][x] = i + 1;
+	if (y + 1 < filler->map_hei && x + 1 < filler->map_wid && \
+		filler->map[y + 1][x + 1] == i)
+		filler->map[y][x] = i + 1;
 }
 
 void	fill_rest(t_filler *filler)
@@ -51,7 +52,7 @@ void	fill_rest(t_filler *filler)
 		{
 			x = -1;
 			while (++x < filler->map_wid)
-				if (filler->board[y][x] == 0)
+				if (filler->map[y][x] == 0)
 					range_all(filler, x, y, i);
 		}
 	}
@@ -59,22 +60,25 @@ void	fill_rest(t_filler *filler)
 
 void	range_one(t_filler *filler, int x, int y)
 {
-	if (x + 1 < filler->map_wid && filler->board[y][x + 1] == -2)
-		filler->board[y][x] = 1;
-	if (x + 1 < filler->map_wid && y - 1 >= 0 && filler->board[y - 1][x + 1] == -2)
-		filler->board[y][x] = 1;
-	if (y - 1 >= 0 && filler->board[y - 1][x] == -2)
-		filler->board[y][x] = 1;
-	if (x - 1 >= 0 && y - 1 >= 0 && filler->board[y - 1][x - 1] == -2)
-		filler->board[y][x] = 1;
-	if (x - 1 >= 0 && filler->board[y][x - 1] == -2)
-		filler->board[y][x] = 1;
-	if (x - 1 >= 0 && y + 1 < filler->map_hei && filler->board[y + 1][x - 1] == -2)
-		filler->board[y][x] = 1;
-	if (y + 1 < filler->map_hei && filler->board[y + 1][x] == -2)
-		filler->board[y][x] = 1;
-	if (y + 1 < filler->map_hei && x + 1 < filler->map_wid && filler->board[y + 1][x + 1] == -2)
-		filler->board[y][x] = 1;
+	if (x + 1 < filler->map_wid && filler->map[y][x + 1] == -2)
+		filler->map[y][x] = 1;
+	if (x + 1 < filler->map_wid && y - 1 >= 0 && \
+		filler->map[y - 1][x + 1] == -2)
+		filler->map[y][x] = 1;
+	if (y - 1 >= 0 && filler->map[y - 1][x] == -2)
+		filler->map[y][x] = 1;
+	if (x - 1 >= 0 && y - 1 >= 0 && filler->map[y - 1][x - 1] == -2)
+		filler->map[y][x] = 1;
+	if (x - 1 >= 0 && filler->map[y][x - 1] == -2)
+		filler->map[y][x] = 1;
+	if (x - 1 >= 0 && y + 1 < filler->map_hei && \
+		filler->map[y + 1][x - 1] == -2)
+		filler->map[y][x] = 1;
+	if (y + 1 < filler->map_hei && filler->map[y + 1][x] == -2)
+		filler->map[y][x] = 1;
+	if (y + 1 < filler->map_hei && x + 1 < filler->map_wid && \
+		filler->map[y + 1][x + 1] == -2)
+		filler->map[y][x] = 1;
 }
 
 void	fill_heatmap(t_filler *filler)
@@ -88,15 +92,14 @@ void	fill_heatmap(t_filler *filler)
 		x = -1;
 		while (++x < filler->map_wid)
 		{
-			if (filler->board[y][x] == 0)
+			if (filler->map[y][x] == 0)
 				range_one(filler, x, y);
 		}
 	}
 }
 
-int	make_heatmap(t_filler *filler)
+void	make_heatmap(t_filler *filler)
 {
 	fill_heatmap(filler);
 	fill_rest(filler);
-	return (0);
 }

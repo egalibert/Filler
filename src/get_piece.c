@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 12:44:23 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/05 13:45:42 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/06 03:37:03 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	give_value(t_filler *filler, char *line)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
+	char	*str;
 
 	y = 0;
-	while (y < filler->piece_hei)
+	while (y < filler->piece_hei && get_next_line(0, &line) > 0)
 	{
-		get_next_line(0, &line);
+		str = line;
 		x = 0;
 		while (x < filler->piece_wid)
 		{
@@ -31,6 +32,7 @@ void	give_value(t_filler *filler, char *line)
 			x++;
 		}
 		y++;
+		ft_strdel(&str);
 	}
 }
 
@@ -54,7 +56,7 @@ int	get_piece(t_filler *filler, char *line)
 {
 	if (!get_piece_info(filler, line))
 		return (-1);
-	filler->piece = make_board(filler->piece_hei, filler->piece_wid);
+	filler->piece = make_map(filler->piece_hei, filler->piece_wid);
 	if (!filler->piece)
 		return (-1);
 	give_value(filler, line);

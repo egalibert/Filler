@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:29:33 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/05 13:40:37 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/06 03:33:55 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void	best_result(t_filler *filler, int x, int y)
 
 int	placement(t_filler *filler, int x_total, int y_total)
 {
-	if (filler->board[y_total][x_total] == -2)
+	if (filler->map[y_total][x_total] == -2)
 		return (0);
-	else if (filler->board[y_total][x_total] == -1)
+	else if (filler->map[y_total][x_total] == -1)
 	{
 		filler->overlap++;
 		if (filler->overlap > 1)
 			return (0);
 	}
 	else
-		filler->map_score += filler->board[y_total][x_total];
+		filler->map_score += filler->map[y_total][x_total];
 	return (1);
 }
 
@@ -64,8 +64,10 @@ int	get_valid(t_filler *filler, int x_set, int y_set)
 	return (1);
 }
 
-int	solver(t_filler *filler, int x, int y)
+int	solver(t_filler *filler)
 {
+	int	x;
+	int	y;
 	int	valid;
 
 	valid = 0;
@@ -85,13 +87,7 @@ int	solver(t_filler *filler, int x, int y)
 		y++;
 	}
 	if (valid == 0)
-	{
-		ft_putnbr(0);
-		ft_putchar(' ');
-		ft_putnbr(0);
-		ft_putchar('\n');
-		return (0);
-	}
+		return (-1);
 	ft_putnbr(filler->best_y);
 	ft_putchar(' ');
 	ft_putnbr(filler->best_x);
