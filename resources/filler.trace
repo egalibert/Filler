@@ -1,7 +1,4 @@
-seed = 96
-O: error on input
-../egaliber.filler: Segfault at 0
-X: error on input
-players/hcao.filler won
+seed = 9310
+../egaliber.filler won
 Score:
-0AGAINST21
+1126AGAINST68
