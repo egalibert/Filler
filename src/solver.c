@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:29:33 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/06 03:33:55 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:55:02 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,7 @@ int	solver(t_filler *filler)
 	}
 	if (valid == 0)
 		return (-1);
-	ft_putnbr(filler->best_y);
-	ft_putchar(' ');
-	ft_putnbr(filler->best_x);
-	ft_putchar('\n');
+	ft_printf("%i %i\n", filler->best_y, filler->best_x);
 	reset_filler(filler);
 	return (0);
 }
