@@ -48,10 +48,14 @@ int	**make_map(int map_height, int map_width)
 	int	**map;
 
 	map = (int **)malloc(sizeof(int *) * map_height);
+	if (!map)
+		return (NULL);
 	y = 0;
 	while (y < map_height)
 	{
 		map[y] = (int *)malloc(sizeof(int) * map_width);
+		if (!map[y])
+			return (NULL);
 		x = 0;
 		while (x < map_width)
 		{
