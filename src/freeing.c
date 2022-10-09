@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 22:26:33 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/06 03:37:42 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/09 12:28:43 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void	free_piece(t_filler *filler)
 
 int	cleaner(t_filler *filler, char *line)
 {
-	free_board(filler);
-	free_piece(filler);
+	if (filler->map != NULL)
+		free_board(filler);
+	if (filler->piece != NULL)
+		free_piece(filler);
 	ft_strdel(&line);
 	ft_putnbr(0);
 	ft_putchar(' ');

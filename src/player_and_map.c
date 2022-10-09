@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 13:39:45 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/05 13:39:54 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/09 12:52:40 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	get_map_values(t_filler *filler, char *line)
 		return (1);
 	filler->map_hei = ft_atoi(y);
 	filler->map_wid = ft_atoi(x);
+	if (!filler->map_hei || !filler->map_wid)
+		return (-1);
 	return (0);
 }
 

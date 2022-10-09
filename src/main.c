@@ -6,13 +6,26 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 11:18:09 by egaliber          #+#    #+#             */
-/*   Updated: 2022/10/06 03:32:45 by egaliber         ###   ########.fr       */
+/*   Updated: 2022/10/09 13:05:31 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-int	get_p_and_m(t_filler *filler, char *line)
+int	get_map_info(t_filler *filler, char *line)
+{
+	if (get_map_values(filler, line) == -1)
+		return (-1);
+	if (filler->map == NULL)
+		filler->map = make_map(filler->map_hei, filler->map_wid);
+	if (filler->map == NULL)
+		return (-1);
+	get_map_details(filler, line);
+	make_heatmap(filler);
+	return (0);
+}
+
+int	get_information(t_filler *filler, char *line)
 {
 	if (ft_strstr(line, "$$$ exec p") && filler->player_num == 0)
 	{
@@ -22,13 +35,8 @@ int	get_p_and_m(t_filler *filler, char *line)
 	}
 	else if (ft_strstr(line, "Plateau"))
 	{
-		get_map_values(filler, line);
-		if (!filler->map_hei || !filler->map_wid)
+		if (get_map_info(filler, line) == -1)
 			return (-1);
-		if (filler->map == NULL)
-			filler->map = make_map(filler->map_hei, filler->map_wid);
-		get_map_details(filler, line);
-		make_heatmap(filler);
 	}
 	else if (ft_strstr(line, "Piece"))
 	{
@@ -68,7 +76,7 @@ int	main(void)
 	init_filler(&filler);
 	while (get_next_line(0, &line) > 0)
 	{
-		if (get_p_and_m(&filler, line) == -1)
+		if (get_information(&filler, line) == -1)
 			return (cleaner(&filler, line));
 	}
 	return (0);
