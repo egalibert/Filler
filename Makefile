@@ -6,7 +6,7 @@
 #    By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/27 11:07:27 by egaliber          #+#    #+#              #
-#    Updated: 2022/10/06 03:34:52 by egaliber         ###   ########.fr        #
+#    Updated: 2022/10/10 14:53:38 by egaliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,8 @@ LIBFT = libft/libft.a
 
 INCLUDES = includes/
 
+PLAYER = play.py
+
 OBJS = $(SRCS:.c=.o)
 
 P_SRCS = $(addprefix $(SRCSPATH), $(SRCS))
@@ -118,5 +120,8 @@ clean :
 fclean : clean
 	@rm -f $(NAME)
 	@make fclean -C libft
+
+play:		$(NAME)
+		python $(PLAYER)
 
 re : fclean all
